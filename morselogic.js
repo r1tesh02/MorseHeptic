@@ -39,8 +39,8 @@ async function playMorse() {
     const morseSpans = document.querySelectorAll(".morse");
 
     const DOT = 350;
-    const DASH = 1300;
-    const SYMBOL_GAP = 500;
+    const DASH = 1500;
+    const SYMBOL_GAP = 700;
     const LETTER_GAP = 1500;
     const WORD_GAP = 2500;
 
