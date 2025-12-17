@@ -11,19 +11,26 @@
 <div class="container">
     <h1>Morse Haptic System</h1>
 
-    <textarea id="textInput" placeholder="Enter text here..."></textarea>
+    <textarea 
+        id="textInput" 
+        placeholder="Enter text here...">
+    </textarea>
 
-    <button onclick="convertToMorse()">Convert</button>
-    <button onclick="playMorse()">▶ Play</button>
+    <div class="buttons">
+        <button onclick="convertToMorse()">Convert</button>
+        <button onclick="playMorse()">▶ Play</button>
+    </div>
 
     <div class="display">
         <div id="textDisplay" class="text-line"></div>
         <div id="morseDisplay" class="morse-line"></div>
     </div>
 
-    <p class="note">⚠ Vibration works on mobile (HTTPS only)</p>
+    <p class="note">
+        ⚠ Works on mobile devices only (HTTPS required)
+    </p>
 </div>
 
-<script src="morselogic.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -6,11 +6,16 @@ const morseMap = {
     Q: "--.-", R: ".-.", S: "...", T: "-",
     U: "..-", V: "...-", W: ".--", X: "-..-",
     Y: "-.--", Z: "--..",
+    "0": "-----", "1": ".----", "2": "..---",
+    "3": "...--", "4": "....-", "5": ".....",
+    "6": "-....", "7": "--...", "8": "---..",
+    "9": "----.",
     " ": "/"
 };
 
 let morseSequence = [];
 
+/* Convert text to Morse and display */
 function convertToMorse() {
     const text = document.getElementById("textInput").value.toUpperCase();
     const textDisplay = document.getElementById("textDisplay");
@@ -29,22 +34,25 @@ function convertToMorse() {
     }
 }
 
+/* Play Morse with vibration + highlighting */
 async function playMorse() {
     if (!("vibrate" in navigator)) {
-        alert("Vibration not supported");
+        alert("Vibration not supported on this device");
         return;
     }
 
     const letters = document.querySelectorAll(".letter");
     const morseSpans = document.querySelectorAll(".morse");
 
-    const DOT = 200;
-    const DASH = 600;
-    const SYMBOL_GAP = 200;
-    const LETTER_GAP = 600;
-    const WORD_GAP = 1400;
+    // ⏱ Optimized, slow & clear timings
+    const DOT = 350;
+    const DASH = 1000;
+    const SYMBOL_GAP = 350;
+    const LETTER_GAP = 1200;
+    const WORD_GAP = 2000;
 
     for (let i = 0; i < morseSequence.length; i++) {
+
         letters[i].classList.add("active");
         morseSpans[i].classList.add("active");
 
@@ -54,13 +62,23 @@ async function playMorse() {
             await sleep(WORD_GAP);
         } else {
             for (let symbol of morse) {
-                morseSpans[i].classList.add("symbol-active");
 
-                if (symbol === ".") navigator.vibrate(DOT);
-                else if (symbol === "-") navigator.vibrate(DASH);
+                if (symbol === ".") {
+                    morseSpans[i].classList.add("dot-active");
+                    navigator.vibrate(DOT);
+                    await sleep(DOT);
+                    morseSpans[i].classList.remove("dot-active");
+                }
+
+                if (symbol === "-") {
+                    await sleep(200); // pre-pause for dash emphasis
+                    morseSpans[i].classList.add("dash-active");
+                    navigator.vibrate(DASH);
+                    await sleep(DASH);
+                    morseSpans[i].classList.remove("dash-active");
+                }
 
                 await sleep(SYMBOL_GAP);
-                morseSpans[i].classList.remove("symbol-active");
             }
             await sleep(LETTER_GAP);
         }
@@ -70,6 +88,7 @@ async function playMorse() {
     }
 }
 
+/* Utility delay */
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
