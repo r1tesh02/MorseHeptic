@@ -69,13 +69,13 @@ button:nth-child(3) {
 }
 
 .active {
-    background: yellow;
+      background: #00ff9d;;
     color: black;
     font-weight: bold;
 }
 
 .symbol-active {
-    background: red;
+ background: yellow;
     color: white;
 }
 

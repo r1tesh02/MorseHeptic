@@ -38,11 +38,11 @@ async function playMorse() {
     const letters = document.querySelectorAll(".letter");
     const morseSpans = document.querySelectorAll(".morse");
 
-    const DOT = 200;
-    const DASH = 600;
-    const SYMBOL_GAP = 200;
-    const LETTER_GAP = 600;
-    const WORD_GAP = 1400;
+    const DOT = 350;
+    const DASH = 1000;
+    const SYMBOL_GAP = 350;
+    const LETTER_GAP = 1200;
+    const WORD_GAP = 2000;
 
     for (let i = 0; i < morseSequence.length; i++) {
         letters[i].classList.add("active");
