@@ -13,6 +13,22 @@
 
     <textarea id="textInput" placeholder="Enter text here..."></textarea>
 
+    <!-- Pace Control -->
+    <div class="pace-control">
+        <label>Pace: <span id="paceValue">1.0×</span></label>
+        <input 
+            type="range" 
+            id="paceSlider"
+            min="0.5"
+            max="2.5"
+            step="0.1"
+            value="1">
+        <div class="pace-labels">
+            <span>Slow</span>
+            <span>Fast</span>
+        </div>
+    </div>
+
     <button onclick="convertToMorse()">Convert</button>
     <button onclick="playMorse()">▶ Play</button>
 

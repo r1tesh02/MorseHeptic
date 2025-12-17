@@ -4,7 +4,6 @@
 }
 
 body {
-    background: #0f2027;
     background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
     color: white;
     min-height: 100vh;
@@ -32,6 +31,28 @@ textarea {
     margin-bottom: 12px;
 }
 
+/* Pace Control */
+.pace-control {
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+.pace-control label {
+    font-weight: bold;
+}
+
+#paceSlider {
+    width: 100%;
+    margin-top: 6px;
+}
+
+.pace-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
 button {
     width: 48%;
     padding: 12px;
@@ -42,11 +63,11 @@ button {
     cursor: pointer;
 }
 
-button:nth-child(2) {
+button:nth-child(4) {
     background: #00c6ff;
 }
 
-button:nth-child(3) {
+button:nth-child(5) {
     background: #00ff9d;
 }
 
@@ -69,14 +90,15 @@ button:nth-child(3) {
 }
 
 .active {
-      background: #00ff9d;;
+    background: #00ff9d;
     color: black;
     font-weight: bold;
 }
 
 .symbol-active {
- background: yellow;
-    color: white;
+    background: yellow;
+    color: black;
+    font-weight: bold;
 }
 
 .note {

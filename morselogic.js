@@ -11,6 +11,23 @@ const morseMap = {
 
 let morseSequence = [];
 
+/* Default base timings */
+const BASE = {
+    DOT: 250,
+    DASH: 1500,
+    SYMBOL_GAP: 900,
+    LETTER_GAP: 1500,
+    WORD_GAP: 2500
+};
+
+/* Pace control */
+const paceSlider = document.getElementById("paceSlider");
+const paceValue = document.getElementById("paceValue");
+
+paceSlider.addEventListener("input", () => {
+    paceValue.textContent = `${paceSlider.value}×`;
+});
+
 function convertToMorse() {
     const text = document.getElementById("textInput").value.toUpperCase();
     const textDisplay = document.getElementById("textDisplay");
@@ -38,11 +55,13 @@ async function playMorse() {
     const letters = document.querySelectorAll(".letter");
     const morseSpans = document.querySelectorAll(".morse");
 
-    const DOT = 250;
-    const DASH = 1500;
-    const SYMBOL_GAP = 900;
-    const LETTER_GAP = 1500;
-    const WORD_GAP = 2500;
+    const pace = parseFloat(paceSlider.value);
+
+    const DOT = BASE.DOT * pace;
+    const DASH = BASE.DASH * pace;
+    const SYMBOL_GAP = BASE.SYMBOL_GAP * pace;
+    const LETTER_GAP = BASE.LETTER_GAP * pace;
+    const WORD_GAP = BASE.WORD_GAP * pace;
 
     for (let i = 0; i < morseSequence.length; i++) {
         letters[i].classList.add("active");
