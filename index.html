@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Morse Haptic Communication</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Morse Haptic System</h1>
+
+    <textarea id="textInput" placeholder="Enter text here..."></textarea>
+
+    <button onclick="convertToMorse()">Convert</button>
+    <button onclick="playMorse()">▶ Play</button>
+
+    <div class="display">
+        <div id="textDisplay" class="text-line"></div>
+        <div id="morseDisplay" class="morse-line"></div>
+    </div>
+
+    <p class="note">⚠ Vibration works on mobile (HTTPS only)</p>
+</div>
+
+<script src="morselogic.js"></script>
+</body>
+</html>
